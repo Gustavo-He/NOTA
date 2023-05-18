@@ -1,0 +1,67 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Cálculo de Média</h1>
+
+    <h2>Notas</h2>
+    <input type="number" id="nota1" placeholder="Nota 1">
+    <input type="number" id="nota2" placeholder="Nota 2">
+    <input type="number" id="nota3"  placeholder="Nota 3">
+    <input type="number" id="nota4" placeholder="Nota 4">
+    <input type="number" id="nota5" placeholder="Nota 5">
+
+    <button onclick="calcularMedia()">Calcular Média</button>
+
+    <h2>Pesos (somente para Média Ponderada)</h2>
+    <input type="number"  placeholder="Nota 1">
+    <input type="number"  placeholder="Nota 2">
+    <input type="number"  placeholder="Nota 3">
+    <input type="number"  placeholder="Nota 4">
+    <input type="number"  placeholder="Nota 5">
+
+    <button onclick="calcularMedia()">Calcular Média</button>
+
+    <h2>Resultados</h2>
+    <p id="media"></p>
+    <p id="resultado"></p>
+
+<script> 
+    function calcularMedia() {
+    var notas = []
+    for (var num = 1; num <= 5; num++) {
+      var nota = parseFloat(document.getElementById('nota' + num).value)
+      notas.push(nota);
+    }
+  
+    var soma = 0;
+    for (var num = 0; num < notas.length; num++) {
+      soma += notas[num]
+    }
+  
+    var media = soma / notas.length;
+  
+    document.getElementById('media').textContent = 'Média: ' + media.toFixed(2)
+  
+    var resultado = ''
+    if (media >= 7) {
+      resultado = 'Aprovado'
+    } else if (media >= 5 && media < 7) {
+      resultado = 'Ficou de Exame'
+    } else {
+      resultado = 'Reprovado'
+    }
+  
+    document.getElementById('resultado').textContent = 'Resultado: ' + resultado
+  }
+</script>
+    
+</body>
+</html>
